@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "AI Email Reply Generator",
+  "version": "1.0.0",
+  "description": "Generate email replies using AI.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["config.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "host_permissions": [
+    "https://email-reply-s1h6.onrender.com/*"
+  ],
+  "icons": {
+    "16": "icons/icon.png",
+    "48": "icons/icon.png",
+    "128": "icons/icon.png"
+  }
+}

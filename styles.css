@@ -1,0 +1,268 @@
+/* AI Reply button - injected next to Gmail Send button */
+.ai-reply-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 14px;
+    margin-left: 8px;
+    background-color: #1a73e8;
+    color: #ffffff;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Button hover state */
+.ai-reply-btn:hover {
+    background-color: #1557b0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14);
+}
+
+/* Button pressed state */
+.ai-reply-btn:active {
+    background-color: #104a94;
+}
+
+/* Button focus state for accessibility */
+.ai-reply-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.4);
+}
+
+/* Button disabled state */
+.ai-reply-btn.disabled {
+    background-color: #dadce0;
+    color: #80868b;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Tone selection panel container */
+.ai-dropdown-panel {
+    position: fixed;
+    width: 260px;
+    background: #ffffff;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    z-index: 10001;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    animation: panelFadeIn 0.15s ease-out;
+}
+
+/* Panel entrance animation */
+@keyframes panelFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form field wrapper */
+.ai-form-group {
+    margin-bottom: 16px;
+}
+
+/* Form label styling */
+.ai-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #5f6368;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tone dropdown select */
+.ai-select {
+    width: 100%;
+    height: 40px;
+    padding: 0 36px 0 12px;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #202124;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    cursor: pointer;
+    appearance: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Dropdown hover state */
+.ai-select:hover {
+    border-color: #bdc1c6;
+}
+
+/* Dropdown focus state */
+.ai-select:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Generate reply button */
+.ai-generate-btn {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #1a73e8;
+    color: #ffffff;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Generate button hover state */
+.ai-generate-btn:hover:not(:disabled) {
+    background-color: #1557b0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Generate button pressed state */
+.ai-generate-btn:active:not(:disabled) {
+    background-color: #104a94;
+}
+
+/* Generate button disabled state */
+.ai-generate-btn:disabled {
+    background-color: #f1f3f4;
+    color: #80868b;
+    cursor: not-allowed;
+}
+
+/* Generate button focus state */
+.ai-generate-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.4);
+}
+
+/* Loading spinner animation */
+.ai-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(128, 134, 139, 0.3);
+    border-top-color: #80868b;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Spinner rotation keyframes */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Status message container - hidden by default */
+.ai-status {
+    margin-top: 12px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    border-radius: 4px;
+    display: none;
+}
+
+/* Status visible state */
+.ai-status.visible {
+    display: block;
+}
+
+/* Info status styling */
+.ai-status.info {
+    background-color: #e8f0fe;
+    color: #1967d2;
+    border: 1px solid #d2e3fc;
+}
+
+/* Success status styling */
+.ai-status.success {
+    background-color: #e6f4ea;
+    color: #137333;
+    border: 1px solid #ceead6;
+}
+
+/* Error status styling */
+.ai-status.error {
+    background-color: #fce8e6;
+    color: #c5221f;
+    border: 1px solid #f5c6cb;
+}
+
+/* Panel header with close button */
+.ai-panel-header {
+    display: flex;
+    justify-content: flex-end;
+    margin: -8px -8px 8px 0;
+}
+
+/* Close button styling */
+.ai-close-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #5f6368;
+    font-size: 18px;
+    transition: background-color 0.15s ease;
+}
+
+/* Close button hover state */
+.ai-close-btn:hover {
+    background-color: #f1f3f4;
+}
+
+/* Close button pressed state */
+.ai-close-btn:active {
+    background-color: #e8eaed;
+}
+
+/* Override Gmail default button styles */
+.ai-reply-btn,
+.ai-reply-btn:hover,
+.ai-reply-btn:focus,
+.ai-reply-btn:active {
+    background-image: none !important;
+}
+
+/* Prevent click events on button children */
+.ai-reply-btn * {
+    pointer-events: none;
+}
+
+/* Prevent button shrinking in Gmail toolbar */
+.dC .ai-reply-btn {
+    flex-shrink: 0;
+}
