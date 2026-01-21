@@ -1,96 +1,74 @@
-# Email Reply AI Service
+# AI Email Reply Chrome Extension
 
 ## Overview
 
-A Spring Boot service that generates email replies using the OpenRouter AI API. It exposes simple REST endpoints for health checks, available tones, and reply generation.
+This is a Chrome extension that integrates with Gmail and the Email Reply AI Service. It adds an **“AI Reply”** button to the Gmail compose area, lets you choose a tone, and automatically generates a reply using the backend API.
+
+---
 
 ## Tech Stack
 
-- Java 21, Spring Boot
-- Spring WebClient (HTTP client)
-- Maven
-- Docker (optional)
+- Chrome Extension (Manifest v3)
+- Vanilla JavaScript (`content.js`, `config.js`)
+- CSS (`styles.css`)
+- Backend API: Email Reply AI Service (OpenRouter-based)
 
 ---
 
-## Quick Start (Initialization)
+## Initialization / Setup
 
-### 1. Prerequisites
-
-- Java 21 (JDK)
-- Maven (or use `mvnw` wrapper)
-- OpenRouter API key
-
-Set your API key as an environment variable:
+### 1. Clone the Repository
 
 ```bash
-export OPEN_API_KEY=your_openrouter_api_key
+git clone https://github.com/your-org/ai-email-reply-extension.git
+cd ai-email-reply-extension
 ```
+
+### 2. (Optional) Configure Backend URL
+
+Open `config.js` and verify or update:
+
+```js
+const CONFIG = Object.freeze({
+    API_BASE_URL: "https://email-reply-s1h6.onrender.com",
+    // ...
+});
+```
+
+Set `API_BASE_URL` to your deployed backend URL.
 
 ---
 
-### 2. Clone the Repository
+## Load Extension in Chrome (Development)
 
-```bash
-git clone https://github.com/your-org/email-reply-service.git
-cd email-reply-service
-```
+1. Open **Google Chrome**.
+2. Go to `chrome://extensions/`.
+3. Enable **Developer mode** (top-right toggle).
+4. Click **“Load unpacked”**.
+5. Select the project folder (where `manifest.json` is located).
 
----
-
-### 3. Run with Maven (Development)
-
-Build and run directly with Spring Boot:
-
-```bash
-./mvnw spring-boot:run
-# or on Windows
-mvnw.cmd spring-boot:run
-```
-
-The service starts on:
-
-```text
-http://localhost:8080
-```
+The extension is now installed.
 
 ---
 
-### 4. Run Packaged JAR (Production-like)
+## Usage
 
-Build:
-
-```bash
-./mvnw clean package
-```
-
-Run:
-
-```bash
-java -jar target/email-reply-0.0.1-SNAPSHOT.jar
-```
+1. Open **Gmail** in Chrome (`https://mail.google.com/`).
+2. Start composing or replying to an email.
+3. Next to the **Send** button, you will see an **“AI Reply”** button.
+4. Click **“AI Reply”**:
+   - A small panel opens.
+   - Choose a reply **tone**.
+   - Click **“Generate Reply”**.
+5. The generated reply is inserted directly into the Gmail compose box.
 
 ---
 
-### 5. Run with Docker (Optional)
+## Files Overview
 
-Build image:
-
-```bash
-docker build -t email-reply-service .
-```
-
-Run container:
-
-```bash
-docker run -p 8080:8080 -e OPEN_API_KEY=your_openrouter_api_key email-reply-service
-```
-
----
-
-## Main Endpoints (Summary)
-
-- `GET /api/email/health` – Basic health info
-- `GET /api/email/tones` – List available tones
-- `POST /api/email/generate` – Generate email reply
+- `manifest.json` – Chrome extension manifest (v3 configuration).
+- `config.js` – API base URL, endpoints, tones, and Gmail DOM selectors.
+- `content.js` – Main content script; injects button, calls backend, updates UI.
+- `styles.css` – Styles for the AI button, dropdown panel, and status messages.
+- `icons/icon.png` – Extension icon.
 ```
