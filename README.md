@@ -71,4 +71,3 @@ The extension is now installed.
 - `content.js` – Main content script; injects button, calls backend, updates UI.
 - `styles.css` – Styles for the AI button, dropdown panel, and status messages.
 - `icons/icon.png` – Extension icon.
-```
