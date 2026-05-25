@@ -1,73 +1,60 @@
-# AI Email Reply Chrome Extension
+# 📧 Email Reply Assistant (Chrome Extension)
 
-## Overview
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#)
+[![Chrome Extensions](https://img.shields.io/badge/Chrome_Extension-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](#)
+[![Open Source](https://img.shields.io/badge/Open_Source-100000?style=for-the-badge&logo=github&logoColor=white)](#)
 
-This is a Chrome extension that integrates with Gmail and the Email Reply AI Service. It adds an **“AI Reply”** button to the Gmail compose area, lets you choose a tone, and automatically generates a reply using the backend API.
-
----
-
-## Tech Stack
-
-- Chrome Extension (Manifest v3)
-- Vanilla JavaScript (`content.js`, `config.js`)
-- CSS (`styles.css`)
-- Backend API: Email Reply AI Service (OpenRouter-based)
+A sleek, lightweight Chrome Extension frontend designed to help users quickly draft and manage email replies directly from their browser. 
 
 ---
 
-## Initialization / Setup
+## 🛑 Why isn't this on the Chrome Web Store?
 
-### 1. Clone the Repository
+To keep this project completely free and avoid the Google Developer registration fee, I have chosen to host this extension exclusively on GitHub for the time being. 
 
+You can easily bypass the store and install this extension directly into your browser in under a minute using **Chrome's Developer Mode**. (See the Installation guide below!).
+
+---
+
+## ✨ Features
+
+* **Seamless Integration:** Injects a clean user interface directly into your browser/email client.
+* **Quick Replies:** Streamlines the process of generating and sending email responses.
+* **Lightweight:** Built with a focus on speed and minimal browser resource consumption.
+* **Local Processing:** The frontend interacts seamlessly with the background scripts without needing heavy third-party dependencies.
+
+---
+
+## 🛠️ Technology Stack
+
+* **Frontend:** HTML, CSS, JavaScript (ES6+)
+* **Framework:** [Insert React/Vite/Vanilla JS - whichever you used]
+* **Architecture:** Chrome Extension Manifest V3 (Background Service Workers, Content Scripts, Popup UI)
+
+---
+
+## 🚀 How to Install (Manual Setup)
+
+Since this extension is not hosted on the Chrome Web Store, you will need to "sideload" it using Developer Mode. It’s incredibly simple:
+
+### Step 1: Get the Code
+Clone this repository to your local machine, or download it as a ZIP file and extract it.
 ```bash
-git clone https://github.com/your-org/ai-email-reply-extension.git
-cd ai-email-reply-extension
+git clone [https://github.com/rahulatoz365-del/email-reply-frontend.git](https://github.com/rahulatoz365-del/email-reply-frontend.git)
+
 ```
 
-### 2. (Optional) Configure Backend URL
+### Step 2: Open Chrome Extensions
 
-Open `config.js` and verify or update:
+1. Open Google Chrome.
+2. Type `chrome://extensions/` in your URL bar and hit Enter.
 
-```js
-const CONFIG = Object.freeze({
-    API_BASE_URL: "https://email-reply-s1h6.onrender.com",
-    // ...
-});
-```
+### Step 3: Enable Developer Mode
 
-Set `API_BASE_URL` to your deployed backend URL.
+In the top right corner of the Extensions page, toggle the **Developer mode** switch to **ON**.
 
----
+### Step 4: Load the Extension
 
-## Load Extension in Chrome (Development)
-
-1. Open **Google Chrome**.
-2. Go to `chrome://extensions/`.
-3. Enable **Developer mode** (top-right toggle).
-4. Click **“Load unpacked”**.
-5. Select the project folder (where `manifest.json` is located).
-
-The extension is now installed.
-
----
-
-## Usage
-
-1. Open **Gmail** in Chrome (`https://mail.google.com/`).
-2. Start composing or replying to an email.
-3. Next to the **Send** button, you will see an **“AI Reply”** button.
-4. Click **“AI Reply”**:
-   - A small panel opens.
-   - Choose a reply **tone**.
-   - Click **“Generate Reply”**.
-5. The generated reply is inserted directly into the Gmail compose box.
-
----
-
-## Files Overview
-
-- `manifest.json` – Chrome extension manifest (v3 configuration).
-- `config.js` – API base URL, endpoints, tones, and Gmail DOM selectors.
-- `content.js` – Main content script; injects button, calls backend, updates UI.
-- `styles.css` – Styles for the AI button, dropdown panel, and status messages.
-- `icons/icon.png` – Extension icon.
+1. Click the **Load unpacked** button that appears in the top left.
+2. Select the folder where you cloned/extracted this repository (Make sure you select the folder containing the `manifest.json` file!).
+3. The extension is now installed! Pin it to your browser toolbar to start using it.
