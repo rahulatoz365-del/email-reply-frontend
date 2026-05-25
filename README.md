@@ -28,7 +28,7 @@ You can easily bypass the store and install this extension directly into your br
 ## 🛠️ Technology Stack
 
 * **Frontend:** HTML, CSS, JavaScript (ES6+)
-* **Framework:** [Insert React/Vite/Vanilla JS - whichever you used]
+* **Framework:** Vite
 * **Architecture:** Chrome Extension Manifest V3 (Background Service Workers, Content Scripts, Popup UI)
 
 ---
